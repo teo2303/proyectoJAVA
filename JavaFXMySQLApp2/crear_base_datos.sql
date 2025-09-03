@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS app_usuarios;
+USE app_usuarios;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefono VARCHAR(50) NOT NULL,
+    dni VARCHAR(10) NOT NULL
+);

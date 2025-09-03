@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="app.controller.InicioController">
+
+    <Label text="Bienvenido a la aplicación" style="-fx-font-size: 18px;"/>
+    <Label text="Por favor, elija una operación" style="-fx-font-size: 14px;"/>
+
+    <Button text="Registrarse" onAction="#abrirRegistro"/>
+    <Button text="Iniciar Sesión" onAction="#abrirLogin"/>
+</VBox>

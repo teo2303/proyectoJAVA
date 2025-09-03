@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"  prefWidth="400" prefHeight="500" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.FormController">
+    <children>
+        <Label text="Nombre:"/>
+        <TextField fx:id="nombreField" promptText="Ingrese su nombre"/>
+        <Label text="Email:"/>
+        <TextField fx:id="emailField" promptText="Ingrese su email"/>
+        <Label text="Telefono:"/>
+        <TextField fx:id="telefonoField" promptText="Ingrese su telefono"/>
+        <Label text="Dni:"/>
+        <TextField fx:id="dniField" promptText="Ingrese su dni"/>
+        <Button text="Guardar" onAction="#guardarUsuario"/>
+    </children>
+</VBox>

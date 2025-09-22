@@ -20,7 +20,8 @@ public class MainApp extends Application {
         try {
             Parent root = FXMLLoader.load(MainApp.class.getResource("/app/inicio.fxml"));
             primaryStage.setTitle("Inicio");
-            primaryStage.setScene(new Scene(root, 800, 600));
+            primaryStage.setScene(new Scene(root, 1000, 600));
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,0 +1,89 @@
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.GestionClases"
+            prefHeight="400.0" prefWidth="600.0">
+
+</AnchorPane>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.controller.GestionClasesController">
+<center>
+    <SplitPane dividerPositions="0.55">
+        <!-- Izquierda: tabla de clases -->
+        <VBox spacing="8" padding="10">
+            <Label text="Clases registradas" />
+            <TableView fx:id="tblClases" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                    <TableColumn fx:id="colCupo" text="Cupo" prefWidth="70"/>
+                </columns>
+            </TableView>
+
+            <Label text="Horarios de la clase seleccionada" />
+            <TableView fx:id="tblHorarios" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colDiaH" text="Día" prefWidth="120"/>
+                    <TableColumn fx:id="colIniH" text="Inicio" prefWidth="80"/>
+                    <TableColumn fx:id="colFinH" text="Fin" prefWidth="80"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="8">
+                <Button fx:id="btnEliminarClase" text="Eliminar clase"/>
+                <Button fx:id="btnEliminarHorario" text="Eliminar horario"/>
+            </HBox>
+        </VBox>
+
+        <!-- Derecha: formulario simple -->
+        <VBox spacing="10" padding="10">
+            <Label text="Nueva / Editar Clase"/>
+            <GridPane hgap="8" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="30"/>
+                    <ColumnConstraints percentWidth="70"/>
+                </columnConstraints>
+
+                <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="tfNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Cupo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Spinner fx:id="spCupo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Días:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <FlowPane hgap="8" vgap="6" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <children>
+                        <CheckBox fx:id="chkLunes" text="Lunes"/>
+                        <CheckBox fx:id="chkMartes" text="Martes"/>
+                        <CheckBox fx:id="chkMiercoles" text="Miércoles"/>
+                        <CheckBox fx:id="chkJueves" text="Jueves"/>
+                        <CheckBox fx:id="chkViernes" text="Viernes"/>
+                        <CheckBox fx:id="chkSabado" text="Sábado"/>
+                        <CheckBox fx:id="chkDomingo" text="Domingo"/>
+                    </children>
+                </FlowPane>
+
+                <Label text="Hora inicio:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="tfHoraIni" promptText="HH:mm" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Hora fin:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="tfHoraFin" promptText="HH:mm" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="8">
+                <Button fx:id="btnNuevo" text="Nuevo"/>
+                <Button fx:id="btnGuardar" text="Guardar clase + horarios"/>
+            </HBox>
+
+            <Label fx:id="lblStatus" textFill="#666"/>
+        </VBox>
+    </SplitPane>
+</center>
+</BorderPane>

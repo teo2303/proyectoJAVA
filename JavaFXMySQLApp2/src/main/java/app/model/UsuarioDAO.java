@@ -10,15 +10,16 @@ public class UsuarioDAO {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
+    // Insertar usuario
     public static boolean insertar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nombre, email, telefono, dni) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nombre, apellido, dni, email) VALUES (?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, usuario.getNombre());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getTelefono());
-            stmt.setString(4, usuario.getDni());
+            stmt.setString(2, usuario.getApellido());
+            stmt.setString(3, usuario.getDni());
+            stmt.setString(4, usuario.getEmail());
 
             stmt.executeUpdate();
             return true;
@@ -29,18 +30,18 @@ public class UsuarioDAO {
         }
     }
 
-    public static boolean existeUsuario(String email, String telefono, String dni) {
-        String sql = "SELECT COUNT(*) FROM usuarios WHERE email = ? OR telefono = ? OR dni = ?";
+    // Verificar si existe usuario por email o dni
+    public static boolean existeUsuario(String email, String dni) {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE email = ? OR dni = ?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, email);
-            stmt.setString(2, telefono);
-            stmt.setString(3, dni);
+            stmt.setString(2, dni);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1) > 0; // true si ya existe
+                return rs.getInt(1) > 0;
             }
 
         } catch (Exception e) {

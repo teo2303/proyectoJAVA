@@ -2,14 +2,36 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<VBox spacing="15" alignment="CENTER" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="app.controller.InicioController">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.controller.InicioController"
+            prefHeight="600.0" prefWidth="900.0">
 
-    <Label text="Bienvenido a la aplicación" style="-fx-font-size: 18px;"/>
-    <Label text="Por favor, elija una operación" style="-fx-font-size: 14px;"/>
 
-    <Button text="Registrarse" onAction="#abrirRegistro"/>
-    <Button text="Iniciar Sesión" onAction="#abrirLogin"/>
-</VBox>
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #2c3e50;" prefWidth="200.0" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" left="10" right="10" bottom="20"/>
+            </padding>
+            <Label text="GYM DASHBOARD" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Separator/>
+            <Button text="Iniciar Sesión" fx:id="btnLogin" prefWidth="180" onAction="#irAlLogin"/>
+            <Button text="Registrar Empleado" fx:id="btnEmpleado" prefWidth="180" onAction="#irAlRegistro"/>
+            <Button text="Registrar Cliente" fx:id="btnCliente" prefWidth="180" onAction="#IrRegistroClientes"/>
+            <Button text="Gestión de Clases" fx:id="btnClases" prefWidth="180" onAction="#irAClases"/>
+            <Button text="Añadir Membresía" fx:id="btnMembresia" prefWidth="180"
+                    onAction="#IrMembresia"/>
+            <Button text="Clientes Activos" fx:id="btnClientesActivos" prefWidth="180" onAction="#irAlListado"/>
+        </VBox>
+    </left>
+
+
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #ecf0f1;">
+            <Label text="Bienvenido al sistema GYMTRAK" style="-fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
+        </StackPane>
+    </center>
+
+</BorderPane>

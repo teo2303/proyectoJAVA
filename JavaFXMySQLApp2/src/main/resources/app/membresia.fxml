@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MembresiaController">
+
+    <!-- Top title -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets bottom="12" left="12" right="12" top="12" />
+            </padding>
+            <Label style="-fx-font-size:18px; -fx-font-weight:bold;" text="Gestión de Membresías - Gym" />
+        </HBox>
+    </top>
+
+    <!-- Center: split view -->
+    <center>
+        <SplitPane dividerPositions="0.55">
+            <items>
+                <!-- Tabla de membresías -->
+                <AnchorPane>
+                    <children>
+                        <TableView fx:id="membershipTable" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                            <columns>
+                                <TableColumn fx:id="colId" prefWidth="60" text="ID" />
+                                <TableColumn fx:id="colNombre" prefWidth="160" text="Nombre" />
+                                <TableColumn fx:id="colDuracion" prefWidth="140" text="Duración (días)" />
+                                <TableColumn fx:id="colPrecio" prefWidth="120" text="Precio ($)" />
+                            </columns>
+                            <placeholder>
+                                <Label text="No hay membresías registradas" />
+                            </placeholder>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+
+                <!-- Formulario de membresía -->
+                <AnchorPane>
+                    <children>
+                        <VBox layoutX="43.0" prefHeight="366.0" prefWidth="260.0" spacing="8" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                            <padding>
+                                <Insets bottom="12" left="12" right="12" top="12" />
+                            </padding>
+
+                            <Label style="-fx-font-size:14px; -fx-font-weight:bold;" text="Formulario de Membresía" />
+
+                            <GridPane hgap="8" vgap="8">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="35" />
+                                    <ColumnConstraints percentWidth="65" />
+                                </columnConstraints>
+
+                                <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <TextField fx:id="tfId" editable="false" promptText="(autogenerado)" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField fx:id="tfNombre" promptText="Ej: Mensual, Anual" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                <Label text="Duración (días):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <Spinner fx:id="spnDuracion" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <valueFactory>
+                                        <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="30" max="1095" min="1" />
+                                    </valueFactory>
+                                </Spinner>
+
+                                <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                <TextField fx:id="tfPrecio" promptText="Ej: 499.99" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                </rowConstraints>
+                            </GridPane>
+
+                            <!-- Botones -->
+                            <HBox alignment="CENTER_RIGHT" spacing="8">
+                                <Button fx:id="btnSave" minWidth="84" onAction="#onSave" text="Guardar" />
+                                <Button fx:id="btnCancel" minWidth="84" onAction="#onCancel" text="Cancelar" />
+                            </HBox>
+
+                            <!-- Label de estado -->
+                            <Label fx:id="lblStatus" style="-fx-font-size:11px; -fx-text-fill:gray;" text="Listo" />
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+
+    <!-- Toolbar inferior -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <Button fx:id="btnNew" onAction="#onNew" text="Nuevo" />
+            <Button fx:id="btnEdit" onAction="#onEdit" text="Editar" />
+            <Button fx:id="btnDelete" onAction="#onDelete" text="Eliminar" />
+            <Region HBox.hgrow="ALWAYS" />
+        </HBox>
+    </bottom>
+</BorderPane>
